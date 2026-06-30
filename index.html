@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1B4D3D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pruma Farms">
+<meta name="application-name" content="Pruma Farms">
+<meta name="description" content="Premium poultry products — table eggs, hatching eggs & live birds. Farm-fresh, biosecure, delivered.">
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pruma Farms — Premium Poultry">
+<meta property="og:description" content="Farm-fresh eggs, hatching eggs & live birds. Biosecure. Science-driven. Delivered fresh.">
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Crect width='512' height='512' rx='80' fill='%231B4D3D'/%3E%3Ctext x='256' y='320' font-size='260' text-anchor='middle'%3E🐔%3C/text%3E%3C/svg%3E">
+
+<!-- PWA Manifest inline -->
+<script id="manifest-data" type="application/json">
+{
+  "name": "Pruma Farms",
+  "short_name": "Pruma",
+  "description": "Premium poultry products — table eggs, hatching eggs & live birds.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B4D3D",
+  "theme_color": "#1B4D3D",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='30' fill='%231B4D3D'/%3E%3Ctext x='96' y='130' font-size='110' text-anchor='middle'%3E🐔%3C/text%3E%3C/svg%3E", "sizes": "192x192", "type": "image/svg+xml" },
+    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Crect width='512' height='512' rx='80' fill='%231B4D3D'/%3E%3Ctext x='256' y='340' font-size='290' text-anchor='middle'%3E🐔%3C/text%3E%3C/svg%3E", "sizes": "512x512", "type": "image/svg+xml" }
+  ],
+  "categories": ["shopping", "food"],
+  "lang": "en"
+}
+</script>
+
+<title>Pruma Farms — Premium Poultry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green:#1B4D3D; --gm:#2A6B55; --gl:#3D8B6F;
+  --gold:#F4B41A; --gd:#D99D0E;
+  --cream:#F9F8F6; --cd:#EEE9E0;
+  --brown:#6B4C2A; --txt:#1A1A1A; --muted:#6B7280;
+  --red:#C0392B;
+  --r:12px; --sh:0 4px 24px rgba(27,77,61,.13);
+  --ease:.26s cubic-bezier(.4,0,.2,1);
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:var(--safe-bottom)}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;display:block}
+input,select{font-family:inherit}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:var(--gl);border-radius:3px}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--green);height:36px;display:flex;align-items:center;overflow:hidden;position:sticky;top:0;z-index:300}
+.trust-track{display:flex;gap:2.5rem;animation:marquee 20s linear infinite;white-space:nowrap;padding-left:100%}
+.trust-track:hover{animation-play-state:paused}
+.trust-track .ck{color:var(--gold);font-weight:700;margin-right:4px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HEADER ── */
+.hdr{background:#fff;border-bottom:1px solid var(--cd);position:sticky;top:36px;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hdr-in{max-width:1280px;margin:0 auto;padding:0 1rem;height:62px;display:flex;align-items:center;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.logo-ic{width:40px;height:40px;background:var(--green);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.logo-tx strong{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--green);line-height:1}
+.logo-tx small{font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.desk-nav{display:flex;gap:.2rem;flex:1;justify-content:center}
+.desk-nav button{padding:.38rem .8rem;border-radius:7px;font-size:.82rem;font-weight:500;color:var(--muted);border:2px solid transparent;transition:var(--ease);background:transparent;cursor:pointer}
+.desk-nav button.active,.desk-nav button:hover{color:var(--green);background:var(--cream);border-color:var(--gl)}
+.hdr-right{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+.search-wrap{display:flex;align-items:center;background:var(--cream);border:1.5px solid var(--cd);border-radius:8px;padding:.35rem .65rem;gap:.4rem;transition:var(--ease)}
+.search-wrap:focus-within{border-color:var(--gl)}
+.search-wrap input{background:none;border:none;outline:none;font-size:.82rem;width:140px}
+.cart-btn{background:var(--green);color:#fff;border-radius:8px;padding:.4rem .85rem;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:.4rem;transition:var(--ease)}
+.cart-btn:hover{background:var(--gm)}
+.cart-n{background:var(--gold);color:var(--green);border-radius:50%;width:17px;height:17px;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.hamburger{background:none;border:1.5px solid var(--cd);border-radius:7px;padding:.35rem .55rem;font-size:1.1rem;cursor:pointer}
+.mob-menu{border-top:1px solid var(--cd);background:#fff;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.4rem}
+.mob-menu button{padding:.6rem .9rem;border-radius:8px;font-size:.9rem;font-weight:500;border:none;background:transparent;text-align:left;cursor:pointer;color:var(--txt)}
+.mob-menu button.active{background:var(--cream);color:var(--green)}
+.mob-search{display:flex;align-items:center;background:var(--cream);border:1.5px solid var(--cd);border-radius:8px;padding:.45rem .7rem;gap:.4rem;margin-top:.3rem}
+.mob-search input{background:none;border:none;outline:none;font-size:.88rem;width:100%}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--green) 0%,var(--gm) 60%,#2E7D5E 100%);padding:3rem 1.25rem 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
+.hero-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:end;position:relative}
+.hero-copy{padding-bottom:3rem}
+.eyebrow-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(244,180,26,.2);border:1px solid rgba(244,180,26,.4);color:var(--gold);border-radius:50px;padding:.26rem .75rem;font-size:.71rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,4vw,3.6rem);color:#fff;line-height:1.15;margin-bottom:1rem;font-weight:700}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-desc{color:rgba(255,255,255,.75);font-size:.98rem;line-height:1.7;max-width:420px;margin-bottom:1.6rem}
+.hero-ctas{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--green);padding:.68rem 1.5rem;border-radius:8px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:var(--ease);font-family:inherit}
+.btn-primary:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 6px 18px rgba(244,180,26,.35)}
+.btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff;padding:.68rem 1.3rem;border-radius:8px;font-weight:600;font-size:.88rem;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:var(--ease);font-family:inherit}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7)}
+.hero-stats{display:flex;gap:1.75rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15);flex-wrap:wrap}
+.hero-stats strong{display:block;font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--gold)}
+.hero-stats span{font-size:.73rem;color:rgba(255,255,255,.6)}
+
+/* Flock selector */
+.flock-box{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:12px 12px 0 0;padding:1.5rem}
+.flock-label{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.flock-cards{display:flex;gap:.65rem}
+.flock-card{flex:1;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:9px;padding:1.1rem .7rem;text-align:center;cursor:pointer;transition:var(--ease);color:#fff}
+.flock-card:hover,.flock-card.active{background:#fff;border-color:var(--gold);color:var(--green);transform:translateY(-2px)}
+.flock-card .fc-icon{font-size:1.75rem;display:block;margin-bottom:.4rem}
+.flock-card .fc-name{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:600;display:block}
+.flock-card .fc-sub{font-size:.68rem;color:rgba(255,255,255,.55);display:block;margin-top:.1rem}
+.flock-card.active .fc-sub{color:var(--muted)}
+
+/* ── SECTION COMMON ── */
+.section{padding:3.2rem 1.25rem}
+.section.bg-w{background:#fff}
+.section.bg-g{background:var(--green)}
+.section.bg-c{background:var(--cream)}
+.sec-in{max-width:1280px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:2rem}
+.eyebrow{font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gm);margin-bottom:.5rem;display:block}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.65rem,2.8vw,2.3rem);color:var(--green);line-height:1.2;margin-bottom:.5rem}
+.sec-desc{color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto;font-size:.9rem}
+
+/* ── PRODUCTS ── */
+.prod-controls{display:flex;align-items:center;gap:.6rem;margin-bottom:1.6rem;flex-wrap:wrap;justify-content:space-between}
+.pills{display:flex;gap:.38rem;flex-wrap:wrap}
+.pill{padding:.36rem .85rem;border-radius:50px;font-size:.78rem;font-weight:500;border:1.5px solid var(--cd);color:var(--muted);cursor:pointer;transition:var(--ease);background:transparent}
+.pill.active{background:var(--green);color:#fff;border-color:var(--green)}
+.pill:hover:not(.active){border-color:var(--gl);color:var(--green)}
+.ws-toggle{display:flex;align-items:center;gap:.45rem;background:var(--cream);border:1.5px solid var(--cd);border-radius:50px;padding:.28rem .38rem .28rem .8rem;font-size:.78rem;font-weight:500;cursor:pointer}
+.toggle-sw{width:38px;height:20px;background:var(--muted);border-radius:50px;position:relative;transition:var(--ease);flex-shrink:0}
+.toggle-sw::after{content:'';position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:3px;left:3px;transition:var(--ease)}
+.toggle-sw.on{background:var(--green)}
+.toggle-sw.on::after{left:21px}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:1.25rem}
+
+/* Product card */
+.p-card{background:var(--cream);border-radius:var(--r);overflow:hidden;border:1.5px solid var(--cd);transition:var(--ease)}
+.p-card:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:rgba(27,77,61,.2)}
+.p-img{height:185px;background:linear-gradient(135deg,#e8f5f0,#d4edde);display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative}
+.p-badge{position:absolute;top:.6rem;left:.6rem;font-size:.63rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.16rem .5rem;border-radius:4px;color:#fff}
+.p-badge.in{background:var(--green)}.p-badge.pre{background:var(--brown)}.p-badge.out{background:var(--red)}
+.p-body{padding:1rem 1rem 1.15rem}
+.p-name{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:600;margin-bottom:.2rem}
+.p-breed{font-size:.73rem;color:var(--muted);margin-bottom:.6rem}
+.moq-note{background:rgba(244,180,26,.14);border:1px solid rgba(244,180,26,.3);border-radius:5px;padding:.32rem .55rem;font-size:.68rem;color:var(--brown);font-weight:600;margin-bottom:.6rem}
+.p-price-row{display:flex;align-items:baseline;gap:.4rem;margin-bottom:.85rem}
+.p-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--green)}
+.p-old{font-size:.8rem;color:var(--muted);text-decoration:line-through}
+.p-unit{font-size:.7rem;color:var(--muted)}
+.p-foot{display:flex;gap:.4rem}
+.btn-add{flex:1;background:var(--green);color:#fff;padding:.56rem;border-radius:7px;font-weight:600;font-size:.82rem;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.35rem;transition:var(--ease);font-family:inherit}
+.btn-add:hover{background:var(--gm)}
+.btn-add:disabled{opacity:.45;cursor:not-allowed}
+.btn-wish{width:36px;height:36px;border:1.5px solid var(--cd);border-radius:7px;background:none;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+.btn-wish:hover{background:#fff0f0;border-color:#e88}
+
+/* ── CONFIGURE ── */
+.cfg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.35rem}
+.cfg-card{background:#fff;border-radius:var(--r);padding:1.6rem;border:1.5px solid var(--cd)}
+.cfg-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--green);margin-bottom:.3rem}
+.cfg-card p{font-size:.8rem;color:var(--muted);margin-bottom:1.15rem}
+.breed-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.breed-btn{padding:.5rem .65rem;border-radius:7px;border:1.5px solid var(--cd);background:var(--cream);display:flex;align-items:center;gap:.4rem;cursor:pointer;font-family:inherit;font-size:.78rem;font-weight:500;transition:var(--ease);text-align:left}
+.breed-btn.sel{border-color:var(--green);background:#edf5f1;color:var(--green);font-weight:600}
+.breed-btn:hover:not(.sel){border-color:var(--gl)}
+.bs{margin-left:auto;font-size:.62rem;font-weight:600;padding:.12rem .38rem;border-radius:3px;flex-shrink:0}
+.bs.in{background:#dcf0e6;color:#1B6B3A}.bs.pre{background:#fff3cd;color:#856404}.bs.out{background:#f8d7da;color:#721c24}
+.tray-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-bottom:1rem}
+.tray-btn{padding:.58rem .3rem;border-radius:7px;border:1.5px solid var(--cd);background:var(--cream);font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;transition:var(--ease);text-align:center}
+.tray-btn small{display:block;font-size:.62rem;font-weight:400;opacity:.75}
+.tray-btn.sel{border-color:var(--green);background:var(--green);color:#fff}
+.tray-price{background:linear-gradient(135deg,var(--green),var(--gm));color:#fff;border-radius:9px;padding:1rem 1.15rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.tray-price .tp-total{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700}
+.tray-price .tp-per{font-size:1.1rem;font-weight:700}
+.tp-lbl{font-size:.72rem;opacity:.75;margin-bottom:.15rem}
+
+/* ── HEALTH ── */
+.health-card{max-width:620px;margin:0 auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:2.1rem}
+.h-label{display:block;font-size:.73rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:.42rem}
+.h-field{width:100%;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:.6rem .82rem;font-size:.88rem;font-family:inherit;outline:none;transition:var(--ease);appearance:none}
+.h-field:focus{border-color:var(--gold);background:rgba(255,255,255,.18)}
+.h-field option{background:var(--green);color:#fff}
+.h-result{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:1.1rem;margin-top:1rem}
+.h-result h4{font-family:'Playfair Display',serif;font-size:.98rem;color:var(--gold);margin-bottom:.4rem}
+.h-result p{font-size:.83rem;color:rgba(255,255,255,.85);line-height:1.65}
+
+/* ── DELIVERY ── */
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem;align-items:start}
+.cal-wrap{background:var(--cream);border-radius:var(--r);border:1.5px solid var(--cd);overflow:hidden}
+.cal-hdr{background:var(--green);color:#fff;padding:.82rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.cal-hdr h3{font-family:'Playfair Display',serif;font-size:.92rem}
+.cal-nav-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:.82rem;font-family:inherit}
+.cal-body{padding:.85rem}
+.cal-dh{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:.35rem}
+.cal-dh span{font-size:.64rem;font-weight:600;color:var(--muted)}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:5px;font-size:.76rem;cursor:pointer;border:2px solid transparent;transition:var(--ease)}
+.cal-day:hover:not(.dis):not(.emp){background:var(--green);color:#fff}
+.cal-day.sel{background:var(--gold);color:var(--green);font-weight:700}
+.cal-day.today{border-color:var(--green);color:var(--green);font-weight:600}
+.cal-day.dis{color:var(--cd);cursor:not-allowed;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px)}
+.cal-day.emp{cursor:default}
+.cal-legend{display:flex;gap:.85rem;padding:0 .85rem .85rem;font-size:.68rem;color:var(--muted);flex-wrap:wrap}
+.leg-dot{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px}
+.del-opt{display:flex;align-items:flex-start;gap:.85rem;padding:.85rem;border-radius:9px;border:1.5px solid var(--cd);margin-bottom:.6rem;cursor:pointer;transition:var(--ease);background:#fff}
+.del-opt.sel{border-color:var(--green);background:#edf5f1}
+.del-opt h4{font-size:.84rem;font-weight:600;margin-bottom:.15rem}
+.del-opt p{font-size:.74rem;color:var(--muted)}
+.del-opt .dt-price{margin-left:auto;font-weight:700;color:var(--green);font-size:.86rem;white-space:nowrap}
+
+/* ── EGG CHART ── */
+.egg-table{width:100%;border-collapse:collapse;min-width:480px}
+.egg-table th{background:var(--green);color:#fff;padding:.68rem .9rem;text-align:left;font-size:.76rem;font-weight:600;letter-spacing:.04em}
+.egg-table td{padding:.68rem .9rem;border-bottom:1px solid var(--cd);font-size:.84rem}
+.egg-table tr:nth-child(even) td{background:#fff}
+.pdf-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:#fff;padding:.6rem 1.25rem;border-radius:7px;font-weight:600;font-size:.84rem;margin-top:1.3rem;border:none;cursor:pointer;font-family:inherit;transition:var(--ease)}
+.pdf-btn:hover{background:var(--gm)}
+
+/* ── PROMISE ── */
+.promise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.15rem}
+.promise-card{text-align:center;padding:1.6rem 1.25rem;background:var(--cream);border-radius:var(--r);border:1.5px solid var(--cd);transition:var(--ease)}
+.promise-card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:rgba(27,77,61,.2)}
+.promise-card span{font-size:2.1rem;display:block;margin-bottom:.75rem}
+.promise-card h3{font-family:'Playfair Display',serif;font-size:.98rem;color:var(--green);margin-bottom:.3rem}
+.promise-card p{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* ── FOOTER ── */
+footer{background:var(--green);color:rgba(255,255,255,.75);padding:2.75rem 1.25rem 1.4rem}
+.ft-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.ft-lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:.42rem}
+.ft-links a{font-size:.8rem;color:rgba(255,255,255,.72);transition:var(--ease)}
+.ft-links a:hover{color:#fff}
+.ft-weather{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:9px;padding:.85rem;margin-top:.75rem}
+.ft-weather .wt{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);font-weight:700}
+.ft-weather .wd{font-size:.74rem;color:rgba(255,255,255,.55)}
+.ft-bot{max-width:1280px;margin:0 auto;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;font-size:.74rem;opacity:.55}
+.ft-soc{display:flex;gap:.55rem}
+.ft-soc a{width:29px;height:29px;background:rgba(255,255,255,.1);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.82rem;transition:var(--ease)}
+.ft-soc a:hover{background:rgba(255,255,255,.22)}
+
+/* ── FLOATING ── */
+.float-btns{position:fixed;bottom:calc(1.25rem + var(--safe-bottom));right:1.25rem;display:flex;flex-direction:column;gap:.55rem;z-index:150}
+.f-tour{background:var(--green);color:#fff;border-radius:50px;padding:.58rem 1rem;font-weight:600;font-size:.78rem;border:none;cursor:pointer;display:flex;align-items:center;gap:.4rem;font-family:inherit;box-shadow:0 4px 18px rgba(27,77,61,.35);transition:var(--ease)}
+.f-tour:hover{background:var(--gm);transform:translateY(-2px)}
+.f-wa{background:#25D366;color:#fff;border-radius:50px;padding:.58rem 1rem;font-weight:600;font-size:.78rem;display:flex;align-items:center;gap:.4rem;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:var(--ease)}
+.f-wa:hover{background:#1db954;transform:translateY(-2px)}
+
+/* ── MODALS ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:400;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal{background:#fff;border-radius:15px;max-width:680px;width:100%;overflow:hidden;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:.8rem;right:.8rem;background:rgba(0,0,0,.45);color:#fff;width:29px;height:29px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:2;cursor:pointer;border:none;font-family:inherit}
+.tour-img{height:280px;background:linear-gradient(135deg,var(--green),var(--gm));display:flex;align-items:center;justify-content:center;font-size:6.5rem;position:relative}
+.tour-live{position:absolute;top:.8rem;left:.8rem;background:#e53935;color:#fff;font-size:.66rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;letter-spacing:.06em}
+.modal-body{padding:1.35rem 1.6rem 1.6rem}
+.modal-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--green);margin-bottom:.4rem}
+.modal-body p{color:var(--muted);font-size:.86rem;line-height:1.65}
+.tour-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.85rem}
+.tour-tag{background:var(--cream);border:1px solid var(--cd);border-radius:4px;padding:.16rem .52rem;font-size:.7rem;font-weight:500;color:var(--muted)}
+
+/* ── FLYING EGG ── */
+.fly-egg{position:fixed;font-size:1.4rem;z-index:999;pointer-events:none;animation:fly .68s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fly{0%{opacity:1;transform:scale(1) translate(0,0)} 60%{opacity:1;transform:scale(.65) translate(38px,-75px)} 100%{opacity:0;transform:scale(.25) translate(75px,-115px)}}
+
+/* ── INSTALL BANNER ── */
+.install-bar{background:var(--gold);color:var(--green);display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.1rem;font-size:.8rem;font-weight:600;gap:.75rem;flex-wrap:wrap}
+.install-bar button{background:var(--green);color:#fff;border:none;border-radius:6px;padding:.32rem .75rem;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+
+/* ── CART PANEL ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:350;display:flex;align-items:flex-start;justify-content:flex-end;padding:6.5rem 1rem 1rem}
+.cart-panel{background:#fff;border-radius:15px;width:100%;max-width:340px;padding:1.35rem;box-shadow:0 20px 60px rgba(0,0,0,.2);max-height:80vh;overflow-y:auto}
+.cart-panel h3{font-family:'Playfair Display',serif;color:var(--green);margin-bottom:1rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-in{grid-template-columns:1fr}
+  .flock-box{border-radius:12px}
+  .del-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .desk-nav{display:none}
+}
+@media(max-width:600px){
+  .flock-cards{flex-direction:column}
+  .hero-stats{gap:1rem}
+  .search-wrap{display:none}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-bot{flex-direction:column;text-align:center}
+  .hero{padding:2rem 1rem 0}
+  .section{padding:2.5rem 1rem}
+  .breed-grid{grid-template-columns:1fr}
+}
+@media(min-width:601px){
+  .hamburger{display:none}
+  .mob-menu{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- PWA INSTALL BANNER -->
+<div class="install-bar" id="installBar" style="display:none">
+  <span>📱 Add Pruma Farms to your home screen for the best experience</span>
+  <button id="installBtn">Install App</button>
+  <button onclick="document.getElementById('installBar').style.display='none'" style="background:transparent;color:var(--green);font-size:1rem;padding:.2rem .4rem">✕</button>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-track" id="trustTrack"></div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <div class="logo-ic">🐔</div>
+      <div class="logo-tx">
+        <strong>Pruma Farms</strong>
+        <small>Premium Poultry</small>
+      </div>
+    </div>
+    <nav class="desk-nav" id="deskNav">
+      <button class="active" data-sec="products">Table Eggs</button>
+      <button data-sec="configure">Hatching Eggs</button>
+      <button data-sec="liveBirds">Live Birds</button>
+      <button data-sec="promise">Our Promise</button>
+      <button data-sec="delivery">Delivery</button>
+    </nav>
+    <div class="hdr-right">
+      <div class="search-wrap">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="Search products…">
+      </div>
+      <button class="cart-btn" id="cartBtn">
+        🛒 Cart <span class="cart-n" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu" style="display:none">
+    <button class="active" data-sec="products">Table Eggs</button>
+    <button data-sec="configure">Hatching Eggs</button>
+    <button data-sec="liveBirds">Live Birds</button>
+    <button data-sec="promise">Our Promise</button>
+    <button data-sec="delivery">Delivery</button>
+    <div class="mob-search"><span>🔍</span><input type="text" placeholder="Search…"></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-in">
+    <div class="hero-copy">
+      <div class="eyebrow-badge">🌿 Straight from the Farm</div>
+      <h1>Premium Poultry,<br><em>Raised Right.</em><br>Delivered Fresh.</h1>
+      <p class="hero-desc">From hatching eggs and live layers to farm-fresh table eggs — Pruma Farms brings biosecure, scientifically managed poultry products directly to your door or hatchery.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="scrollTo('products')">Shop Now →</button>
+        <button class="btn-outline" onclick="openModal('tourModal')">📍 Virtual Farm Tour</button>
+      </div>
+      <div class="hero-stats">
+        <div><strong>12,000+</strong><span>Laying Birds</span></div>
+        <div><strong>98%</strong><span>Hatch Rate</span></div>
+        <div><strong>3 Breeds</strong><span>Certified Stock</span></div>
+      </div>
+    </div>
+    <div class="flock-box">
+      <p class="flock-label">What are you looking for?</p>
+      <div class="flock-cards">
+        <button class="flock-card active" data-cat="eggs" onclick="selectFlock(this,'eggs')">
+          <span class="fc-icon">🥚</span>
+          <span class="fc-name">Table Eggs</span>
+          <span class="fc-sub">Fresh &amp; graded</span>
+        </button>
+        <button class="flock-card" data-cat="hatching" onclick="selectFlock(this,'hatching')">
+          <span class="fc-icon">🐣</span>
+          <span class="fc-name">Hatching Eggs</span>
+          <span class="fc-sub">Fertilized &amp; bred</span>
+        </button>
+        <button class="flock-card" data-cat="birds" onclick="selectFlock(this,'birds')">
+          <span class="fc-icon">🐓</span>
+          <span class="fc-name">Live Birds</span>
+          <span class="fc-sub">Layers, Broilers, Guinea</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section bg-w" id="products">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow">Our Products</span>
+      <h2 class="sec-title">Pick Your Perfect Flock</h2>
+      <p class="sec-desc">All products sourced from our biosecure, climate-controlled sheds. Quality guaranteed from shed to table.</p>
+    </div>
+    <div class="prod-controls">
+      <div class="pills" id="pillsBar">
+        <button class="pill active" data-f="all">All Products</button>
+        <button class="pill" data-f="eggs">Table Eggs</button>
+        <button class="pill" data-f="hatching">Hatching Eggs</button>
+        <button class="pill" data-f="birds">Live Birds</button>
+      </div>
+      <button class="ws-toggle" id="wsToggle">
+        Wholesale Mode
+        <div class="toggle-sw" id="toggleSw"></div>
+      </button>
+    </div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- CONFIGURE -->
+<section class="section bg-c" id="configure">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow">Customise Your Order</span>
+      <h2 class="sec-title">Choose Your Breed &amp; Quantity</h2>
+      <p class="sec-desc">Select the breed and tray size that suits your farm or kitchen. Prices update instantly.</p>
+    </div>
+    <div class="cfg-grid">
+      <div class="cfg-card">
+        <h3>🐣 Hatching Egg Breeds</h3>
+        <p>Select one or more breeds. Availability is updated weekly.</p>
+        <div class="breed-grid" id="breedGrid"></div>
+      </div>
+      <div class="cfg-card">
+        <h3>🥚 Table Egg Tray Size</h3>
+        <p>Choose your tray size — price per egg drops with larger orders.</p>
+        <div class="tray-grid" id="trayGrid"></div>
+        <div class="tray-price">
+          <div><div class="tp-lbl">Total Price</div><div class="tp-total" id="trayTotal">K 84.00</div></div>
+          <div style="text-align:right"><div class="tp-lbl">Per Egg</div><div class="tp-per" id="trayPer">K 7.00</div></div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="addTrayCart()">Add Tray to Cart →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH CHECKER -->
+<section class="section bg-g" id="health">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--gold)">Flock Health Tool</span>
+      <h2 class="sec-title" style="color:#fff">Check My Flock Health</h2>
+      <p class="sec-desc" style="color:rgba(255,255,255,.7)">Answer two quick questions and we'll recommend the right Pruma product for your birds.</p>
+    </div>
+    <div class="health-card">
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div>
+          <label class="h-label">Bird Type</label>
+          <select class="h-field" id="hBird">
+            <option value="">— Select bird type —</option>
+            <option value="layer">Layer Hens</option>
+            <option value="broiler">Broilers</option>
+            <option value="guinea">Guinea Fowls</option>
+            <option value="mixed">Mixed Flock</option>
+          </select>
+        </div>
+        <div>
+          <label class="h-label">Bird Age (weeks)</label>
+          <input class="h-field" type="number" id="hAge" placeholder="e.g. 16" min="1" max="104">
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;padding:.78rem" onclick="runHealth()">🔍 Get My Recommendation</button>
+        <div class="h-result" id="hResult" style="display:none">
+          <h4 id="hTitle"></h4>
+          <p id="hBody"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="section bg-w" id="delivery">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow">Delivery Schedule</span>
+      <h2 class="sec-title">Choose Your Delivery Date</h2>
+      <p class="sec-desc">We deliver Monday–Saturday. Sundays are reserved for biosecurity cleaning and flock rest.</p>
+    </div>
+    <div class="del-grid">
+      <div class="cal-wrap">
+        <div class="cal-hdr">
+          <h3 id="calLabel">July 2025</h3>
+          <div style="display:flex;gap:.35rem">
+            <button class="cal-nav-btn" onclick="prevMo()">‹</button>
+            <button class="cal-nav-btn" onclick="nextMo()">›</button>
+          </div>
+        </div>
+        <div class="cal-body">
+          <div class="cal-dh">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="cal-days" id="calDays"></div>
+        </div>
+        <div class="cal-legend">
+          <span><span class="leg-dot" style="background:var(--gold)"></span>Selected</span>
+          <span><span class="leg-dot" style="background:var(--cd)"></span>No Sunday delivery</span>
+          <span><span class="leg-dot" style="border:2px solid var(--green)"></span>Today</span>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--green);margin-bottom:.4rem">Fast, Fresh Delivery</h3>
+        <p style="color:var(--muted);line-height:1.65;margin-bottom:1.15rem;font-size:.88rem">Order by 10am for next-day delivery in your area. We use cold-chain vehicles to guarantee freshness on arrival.</p>
+        <div id="delOptions"></div>
+        <button class="btn-primary" style="margin-top:1rem" onclick="confirmDel()">📅 Confirm Delivery Date</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EGG SIZE CHART -->
+<section class="section bg-c" id="egg-chart">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow">Reference Guide</span>
+      <h2 class="sec-title">Egg Size Chart</h2>
+      <p class="sec-desc">All Pruma eggs are graded and candled. Use this guide to order the right size for your needs.</p>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="egg-table">
+        <thead><tr><th>Size</th><th>Visual</th><th>Weight</th><th>Best For</th><th>Retail Price</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Small</strong></td><td>🥚</td><td>45–52g</td><td>Baking, children's meals</td><td>K 4.50</td></tr>
+          <tr><td><strong>Medium</strong></td><td>🥚🥚</td><td>53–62g</td><td>General cooking, omelettes</td><td>K 5.50</td></tr>
+          <tr><td><strong>Large</strong></td><td>🥚🥚🥚</td><td>63–72g</td><td>Recipes, hospitality industry</td><td>K 7.00</td></tr>
+          <tr><td><strong>Jumbo</strong></td><td>🥚🥚🥚🥚</td><td>73g+</td><td>Premium retail, gifting</td><td>K 8.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="pdf-btn" onclick="alert('📄 Hatching Guide PDF downloading…')">📄 Download Hatching Guide (PDF)</button>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="section bg-w" id="promise">
+  <div class="sec-in">
+    <div class="sec-head">
+      <span class="eyebrow">The Pruma Promise</span>
+      <h2 class="sec-title">Why Farmers Trust Us</h2>
+    </div>
+    <div class="promise-grid" id="promiseGrid"></div>
+  </div>
+</section>
+
+<!-- LIVE BIRDS (anchor) -->
+<div id="liveBirds"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="logo" style="margin-bottom:.7rem">
+        <div class="logo-ic" style="width:35px;height:35px;font-size:1rem">🐔</div>
+        <div class="logo-tx"><strong style="color:#fff;font-family:'Playfair Display',serif">Pruma Farms</strong><br><small style="color:rgba(255,255,255,.45)">Premium Poultry</small></div>
+      </div>
+      <p style="font-size:.8rem;line-height:1.65;margin-bottom:.85rem">Biosecure. Science-driven. Farm to table. Pruma Farms supplies premium poultry products across the region with unmatched care and transparency.</p>
+      <div class="ft-weather"><div class="wt">24°C ☀️</div><div class="wd">Sunny — optimal laying conditions today</div></div>
+    </div>
+    <div>
+      <div class="ft-lbl">Products</div>
+      <ul class="ft-links"><li><a href="#">Table Eggs</a></li><li><a href="#">Hatching Eggs</a></li><li><a href="#">Layer Birds</a></li><li><a href="#">Broilers</a></li><li><a href="#">Guinea Fowls</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-lbl">Resources</div>
+      <ul class="ft-links"><li><a href="#">Hatching Guide PDF</a></li><li><a href="#">Breed Profiles</a></li><li><a href="#">Flock Health FAQ</a></li><li><a href="#">Feed Calculator</a></li><li><a href="#">Contact the Farm</a></li></ul>
+    </div>
+    <div>
+      <div class="ft-lbl">Contact</div>
+      <ul class="ft-links" style="gap:.65rem">
+        <li>📍 Plot 45, Chisamba Road, Lusaka, Zambia</li>
+        <li>📞 +260 97 123 4567</li>
+        <li>✉️ orders@prumafarms.co.zm</li>
+        <li>⏰ Mon–Sat, 7am–5pm</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 Pruma Farms. All rights reserved.</p>
+    <div class="ft-soc"><a href="#">📘</a><a href="#">📸</a><a href="#">▶️</a></div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <button class="f-tour" onclick="openModal('tourModal')">🎥 Farm Tour</button>
+  <a class="f-wa" href="https://wa.me/260971234567" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<!-- VIRTUAL TOUR MODAL -->
+<div class="overlay" id="tourModal" style="display:none" onclick="closeModalBg(event,'tourModal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('tourModal')">✕</button>
+    <div class="tour-img"><span>🏠</span><span class="tour-live">LIVE 360°</span></div>
+    <div class="modal-body">
+      <h3>Pruma Farms — Virtual Tour</h3>
+      <p>Welcome inside our biosecure, climate-controlled laying sheds. Every square metre is designed for bird welfare and optimal egg production. Our sheds maintain 22–26°C year-round with automated lighting and ventilation.</p>
+      <div class="tour-tags">
+        <span class="tour-tag">🌡️ Temp-Controlled</span><span class="tour-tag">💡 Automated Lighting</span>
+        <span class="tour-tag">🔒 Access-Controlled</span><span class="tour-tag">🧼 Footbath Entry</span><span class="tour-tag">📹 CCTV Monitored</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-overlay" id="cartOverlay" style="display:none" onclick="closeModalBg(event,'cartOverlay')">
+  <div class="cart-panel" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h3>Your Cart 🛒</h3>
+      <button onclick="closeModal('cartOverlay')" style="font-size:1.1rem;cursor:pointer;background:none;border:none">✕</button>
+    </div>
+    <div id="cartContent"></div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ─────────────────────────────────────────────────────
+const PRODUCTS=[
+  {id:1,cat:'eggs',   name:'Free-Range Brown Eggs',    breed:'Kuroiler Hens',   emoji:'🥚',price:84, ws:65, unit:'per tray (12)',badge:'In Stock', bc:'in', moq:5},
+  {id:2,cat:'eggs',   name:'White Table Eggs – Jumbo', breed:'Lohmann White',   emoji:'🥚',price:102,ws:80, unit:'per tray (12)',badge:'In Stock', bc:'in', moq:10},
+  {id:3,cat:'hatching',name:'Rhode Island Red Eggs',   breed:'Pure RIR Breed',  emoji:'🐣',price:12, ws:9,  unit:'per egg',      badge:'In Stock', bc:'in', moq:50},
+  {id:4,cat:'hatching',name:'Sussex Hatching Eggs',    breed:'Light Sussex',    emoji:'🐣',price:14, ws:11, unit:'per egg',      badge:'Pre-Order',bc:'pre',moq:30},
+  {id:5,cat:'hatching',name:'Kuroiler Fertilized Eggs',breed:'Kuroiler F1',     emoji:'🐣',price:10, ws:7.5,unit:'per egg',      badge:'Sold Out', bc:'out',moq:100},
+  {id:6,cat:'birds',  name:'Layer Pullets (16wks)',    breed:'Lohmann Brown',   emoji:'🐔',price:75, ws:60, unit:'per bird',     badge:'In Stock', bc:'in', moq:25},
+  {id:7,cat:'birds',  name:'Day-Old Broiler Chicks',   breed:'Ross 308',        emoji:'🐤',price:18, ws:14, unit:'per chick',    badge:'In Stock', bc:'in', moq:100},
+  {id:8,cat:'birds',  name:'Guinea Fowl Keets',        breed:'Helmeted Guinea', emoji:'🦃',price:22, ws:17, unit:'per keet',     badge:'Pre-Order',bc:'pre',moq:50},
+];
+const BREEDS=[
+  {name:'Rhode Island Red',status:'in', label:'In Stock'},
+  {name:'Light Sussex',    status:'pre',label:'Pre-Order'},
+  {name:'Kuroiler F1',     status:'out',label:'Sold Out'},
+  {name:'Lohmann Brown',   status:'in', label:'In Stock'},
+  {name:'Ross 308',        status:'in', label:'In Stock'},
+  {name:'Helmeted Guinea', status:'pre',label:'Pre-Order'},
+];
+const TRAYS=[{eggs:6,price:42,per:7},{eggs:12,price:84,per:7},{eggs:30,price:195,per:6.5},{eggs:90,price:540,per:6}];
+const DEL_OPTS=[
+  {icon:'🚚',title:'Standard Delivery',sub:'Next business day, 8am–5pm',price:'K 15'},
+  {icon:'⚡',title:'Express Delivery',  sub:'Same day if ordered before 10am',price:'K 30'},
+  {icon:'🏭',title:'Farm Pickup',       sub:'Collect directly — save on fees',price:'Free'},
+];
+const HEALTH_DATA={
+  layer: {young:{title:'🐣 Starter Phase (0–6 wks)',body:'Your layers are in the starter phase. Pruma recommends our Day-Old Pullet Chicks for replacement stock. Focus on warmth and vaccination.'},grower:{title:'🌱 Grower Phase (7–17 wks)',body:'Your birds are developing their frames. Our Pullets (16-week) are ideal replacement birds at this stage.'},layer:{title:'🥚 Peak Laying Phase (18+ wks)',body:'Your birds should be in or near full production. Check our Layer Bird stock if replacements are needed.'}},
+  broiler:{young:{title:'🐤 Day-Old to Week 2',body:'Young broilers need warmth and high-protein feed. Our Day-Old Broiler Chicks (Ross 308) are available now.'},grower:{title:'📈 Finisher Phase (Weeks 3–6)',body:'Your broilers are in the finisher phase. Contact Pruma for bulk chick orders to plan your next cycle.'},layer:{title:'🏁 Processing Age (6+ wks)',body:'At 6+ weeks, Ross 308 broilers should be near target weight. Plan your next batch with Pruma.'}},
+  guinea:{young:{title:'🐣 Keet Phase (0–8 wks)',body:'Guinea keets are fragile early on. Keep them warm and dry. Our Helmeted Guinea Keets are on pre-order.'},grower:{title:'🌿 Juvenile Phase (8–20 wks)',body:'Guinea fowls are hardening at this age. Semi-free-range conditions work well.'},layer:{title:'🦃 Adult Guinea (20+ wks)',body:'Adult guinea fowls are excellent foragers. Their eggs are a niche premium product.'}},
+  mixed: {young:{title:'🐥 Mixed Flock — Early Stage',body:'For a mixed flock, separate by species where possible. Pruma supplies all three types.'},grower:{title:'🌾 Mixed Flock — Growing Stage',body:"Manage nutrition separately for broilers vs layers. Talk to our team for a combined order."},layer:{title:'🏡 Mixed Flock — Mature Stage',body:'A mature mixed flock is productive and diverse. Contact us for replacement stock planning.'}},
+};
+const PROMISES=[
+  {icon:'💉',title:'100% Vaccinated',body:'Every bird follows a strict vaccination protocol. Full records available on request.'},
+  {icon:'🌿',title:'No Antibiotics',body:'We use probiotics and natural management — zero routine antibiotics in our programme.'},
+  {icon:'🧪',title:'Lab-Tested Eggs',body:'Random batch testing for Salmonella and quality benchmarks at a certified facility.'},
+  {icon:'🔒',title:'Biosecure Sheds',body:'Controlled-access housing, footbaths, and scheduled disinfection every Sunday.'},
+  {icon:'🚚',title:'24-Hour Freshness',body:'Eggs leave the farm within 24 hours of collection — always in refrigerated vehicles.'},
+  {icon:'🐣',title:'Verified Hatch Rate',body:'Our hatching eggs consistently achieve 95–98% fertility, backed by hatchery data.'},
+];
+const TRUST_ITEMS=[
+  '100% Vaccinated Birds','No Antibiotics Added','Farm-Fresh Within 24 Hours',
+  'Biosecure Sheds — Certified','Cold-Chain Delivery Available','Hatchery Verified Breeds',
+];
+
+// ─── STATE ────────────────────────────────────────────────────
+let isWS=false, cartCount=0, activeFilter='all';
+let selBreed=0, selTray=1, selDel=0;
+let calY, calM, selDate=null;
+const cart=[];
+
+// ─── INIT ─────────────────────────────────────────────────────
+(function init(){
+  buildTrust(); buildProducts(); buildBreeds(); buildTrays();
+  buildDelivery(); buildPromise(); initCal(); initNav();
+  initMobileMenu(); initCart();
+})();
+
+// ─── TRUST BAR ───────────────────────────────────────────────
+function buildTrust(){
+  const all=[...TRUST_ITEMS,...TRUST_ITEMS];
+  document.getElementById('trustTrack').innerHTML=all.map(i=>`<span class="ck">✓</span><span style="font-size:.76rem;letter-spacing:.04em;color:rgba(249,248,246,.85);font-weight:500">${i}&nbsp;&nbsp;&nbsp;</span>`).join('');
+}
+
+// ─── PRODUCTS ────────────────────────────────────────────────
+function buildProducts(){
+  const list=activeFilter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===activeFilter);
+  const q=document.getElementById('searchInput')?.value.toLowerCase()||'';
+  const filtered=q?list.filter(p=>p.name.toLowerCase().includes(q)||p.breed.toLowerCase().includes(q)):list;
+  document.getElementById('prodGrid').innerHTML=filtered.map(p=>{
+    const price=isWS?p.ws:p.price;
+    const sold=p.badge==='Sold Out';
+    return `<div class="p-card">
+      <div class="p-img">${p.emoji}<span class="p-badge ${p.bc}">${p.badge}</span></div>
+      <div class="p-body">
+        <div class="p-name">${p.name}</div>
+        <div class="p-breed">${p.breed}</div>
+        ${isWS?`<div class="moq-note">⚠️ Min. order: ${p.moq} units (wholesale)</div>`:''}
+        <div class="p-price-row">
+          <span class="p-price">K ${price.toFixed(2)}</span>
+          ${isWS?`<span class="p-old">K ${p.price.toFixed(2)}</span>`:''}
+          <span class="p-unit">${p.unit}</span>
+        </div>
+        <div class="p-foot">
+          <button class="btn-add" ${sold?'disabled':''} onclick="addToCart(event,'${p.emoji}','${p.name}',${price})">
+            ${sold?'✗ Sold Out':'+ Add to Cart'}
+          </button>
+          <button class="btn-wish">♡</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('pillsBar').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-f]');
+  if(!btn)return;
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter=btn.dataset.f;
+  buildProducts();
+});
+
+document.getElementById('wsToggle').addEventListener('click',()=>{
+  isWS=!isWS;
+  document.getElementById('toggleSw').classList.toggle('on',isWS);
+  buildProducts();
+});
+
+document.getElementById('searchInput').addEventListener('input',buildProducts);
+
+// ─── FLOCK SELECTOR ──────────────────────────────────────────
+function selectFlock(el,cat){
+  document.querySelectorAll('.flock-card').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  activeFilter=cat;
+  document.querySelectorAll('.pill').forEach(p=>{p.classList.remove('active'); if(p.dataset.f===cat)p.classList.add('active');});
+  buildProducts();
+  setTimeout(()=>scrollTo('products'),80);
+}
+
+// ─── BREEDS ──────────────────────────────────────────────────
+function buildBreeds(){
+  document.getElementById('breedGrid').innerHTML=BREEDS.map((b,i)=>`
+    <button class="breed-btn${i===selBreed?' sel':''}" onclick="pickBreed(${i})">🐓 ${b.name} <span class="bs ${b.status}">${b.label}</span></button>`).join('');
+}
+function pickBreed(i){selBreed=i;buildBreeds();}
+
+// ─── TRAYS ───────────────────────────────────────────────────
+function buildTrays(){
+  document.getElementById('trayGrid').innerHTML=TRAYS.map((t,i)=>`
+    <button class="tray-btn${i===selTray?' sel':''}" onclick="pickTray(${i})">${t.eggs}<small>eggs</small></button>`).join('');
+  updateTrayPrice();
+}
+function pickTray(i){selTray=i;buildTrays();}
+function updateTrayPrice(){
+  const t=TRAYS[selTray];
+  document.getElementById('trayTotal').textContent=`K ${t.price.toFixed(2)}`;
+  document.getElementById('trayPer').textContent=`K ${t.per.toFixed(2)}`;
+}
+function addTrayCart(){addToCart(null,'🥚',`Tray of ${TRAYS[selTray].eggs} eggs`,TRAYS[selTray].price);}
+
+// ─── CART ────────────────────────────────────────────────────
+function addToCart(e,emoji,name,price){
+  cartCount++;
+  cart.push({emoji,name,price});
+  document.getElementById('cartCount').textContent=cartCount;
+  if(e){
+    const fly=document.createElement('div');
+    fly.className='fly-egg';
+    fly.textContent=emoji;
+    fly.style.left=e.clientX+'px';
+    fly.style.top=e.clientY+'px';
+    document.body.appendChild(fly);
+    setTimeout(()=>fly.remove(),700);
+  }
+  updateCartContent();
+}
+function initCart(){document.getElementById('cartBtn').addEventListener('click',()=>openModal('cartOverlay'));}
+function updateCartContent(){
+  const el=document.getElementById('cartContent');
+  if(cart.length===0){
+    el.innerHTML=`<div style="text-align:center;padding:2rem 0;color:var(--muted)"><div style="font-size:3rem;margin-bottom:.7rem">🥚</div><p style="font-size:.86rem">Your cart is empty.</p></div>`;
+  } else {
+    el.innerHTML=`<div style="margin-bottom:1rem">${cart.slice(-5).map(i=>`<div style="display:flex;align-items:center;gap:.6rem;padding:.65rem 0;border-bottom:1px solid var(--cd)"><span style="font-size:1.4rem">${i.emoji}</span><div style="flex:1"><div style="font-size:.84rem;font-weight:500">${i.name}</div><div style="font-size:.75rem;color:var(--muted)">K ${i.price.toFixed(2)}</div></div></div>`).join('')}</div>
+    <div style="background:var(--cream);border-radius:8px;padding:.85rem;margin-bottom:.9rem;font-size:.84rem;display:flex;justify-content:space-between"><span style="color:var(--muted)">${cart.length} item(s)</span><strong style="color:var(--green)">K ${cart.reduce((a,i)=>a+i.price,0).toFixed(2)}</strong></div>
+    <button class="btn-primary" style="width:100%;justify-content:center">Checkout →</button>`;
+  }
+}
+
+// ─── HEALTH CHECKER ──────────────────────────────────────────
+function runHealth(){
+  const type=document.getElementById('hBird').value;
+  const age=parseInt(document.getElementById('hAge').value);
+  if(!type||isNaN(age))return;
+  const phase=age<=6?'young':age<=17?'grower':'layer';
+  const data=HEALTH_DATA[type]?.[phase];
+  if(data){
+    document.getElementById('hTitle').textContent=data.title;
+    document.getElementById('hBody').textContent=data.body;
+    document.getElementById('hResult').style.display='block';
+  }
+}
+
+// ─── DELIVERY ────────────────────────────────────────────────
+function buildDelivery(){
+  document.getElementById('delOptions').innerHTML=DEL_OPTS.map((o,i)=>`
+    <div class="del-opt${i===selDel?' sel':''}" onclick="pickDel(${i})">
+      <span style="font-size:1.35rem">${o.icon}</span>
+      <div style="flex:1"><h4>${o.title}</h4><p>${o.sub}</p></div>
+      <span class="dt-price">${o.price}</span>
+    </div>`).join('');
+}
+function pickDel(i){selDel=i;buildDelivery();}
+function confirmDel(){
+  if(!selDate){alert('Please select a delivery date first.');return;}
+  const d=new Date(selDate.y,selDate.m,selDate.d);
+  alert(`✅ Delivery confirmed for ${d.toDateString()} via ${DEL_OPTS[selDel].title}!`);
+}
+
+// ─── CALENDAR ────────────────────────────────────────────────
+function initCal(){const n=new Date();calY=n.getFullYear();calM=n.getMonth();renderCal();}
+function renderCal(){
+  const label=new Date(calY,calM).toLocaleString('default',{month:'long',year:'numeric'});
+  document.getElementById('calLabel').textContent=label;
+  const first=new Date(calY,calM,1).getDay();
+  const days=new Date(calY,calM+1,0).getDate();
+  const today=new Date();
+  let h='';
+  for(let i=0;i<first;i++)h+=`<div class="cal-day emp"></div>`;
+  for(let d=1;d<=days;d++){
+    const dt=new Date(calY,calM,d);
+    const sun=dt.getDay()===0;
+    const isTod=d===today.getDate()&&calM===today.getMonth()&&calY===today.getFullYear();
+    const isSel=selDate&&d===selDate.d&&calM===selDate.m&&calY===selDate.y;
+    const cls=['cal-day',sun?'dis':'',isTod&&!isSel?'today':'',isSel?'sel':''].filter(Boolean).join(' ');
+    h+=`<div class="${cls}"${!sun?` onclick="pickDate(${d})"`:''} >${d}</div>`;
+  }
+  document.getElementById('calDays').innerHTML=h;
+}
+function pickDate(d){selDate={d,m:calM,y:calY};renderCal();}
+function prevMo(){calM--;if(calM<0){calM=11;calY--;}renderCal();}
+function nextMo(){calM++;if(calM>11){calM=0;calY++;}renderCal();}
+
+// ─── PROMISE ─────────────────────────────────────────────────
+function buildPromise(){
+  document.getElementById('promiseGrid').innerHTML=PROMISES.map(p=>`
+    <div class="promise-card"><span>${p.icon}</span><h3>${p.title}</h3><p>${p.body}</p></div>`).join('');
+}
+
+// ─── NAV ─────────────────────────────────────────────────────
+function initNav(){
+  document.getElementById('deskNav').addEventListener('click',e=>{
+    const btn=e.target.closest('[data-sec]');
+    if(!btn)return;
+    document.querySelectorAll('#deskNav button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    scrollTo(btn.dataset.sec);
+  });
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const id=en.target.id;
+        document.querySelectorAll('#deskNav button,[data-sec]').forEach(b=>{b.classList.remove('active');if(b.dataset.sec===id)b.classList.add('active');});
+      }
+    });
+  },{threshold:.3});
+  ['products','configure','health','delivery','promise'].forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────────
+function initMobileMenu(){
+  const ham=document.getElementById('hamburger');
+  const menu=document.getElementById('mobMenu');
+  ham.addEventListener('click',()=>{
+    const open=menu.style.display==='flex';
+    menu.style.display=open?'none':'flex';
+    ham.textContent=open?'☰':'✕';
+  });
+  menu.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-sec]');
+    if(!btn)return;
+    menu.style.display='none';
+    ham.textContent='☰';
+    scrollTo(btn.dataset.sec);
+  });
+}
+
+// ─── MODAL HELPERS ───────────────────────────────────────────
+function openModal(id){document.getElementById(id).style.display='flex';}
+function closeModal(id){document.getElementById(id).style.display='none';}
+function closeModalBg(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+
+// ─── SCROLL HELPER ───────────────────────────────────────────
+function scrollTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+// ─── PWA MANIFEST INJECTION ──────────────────────────────────
+(function injectManifest(){
+  const data=document.getElementById('manifest-data').textContent;
+  const blob=new Blob([data],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('link');
+  link.rel='manifest'; link.href=url;
+  document.head.appendChild(link);
+})();
+
+// ─── SERVICE WORKER ──────────────────────────────────────────
+if('serviceWorker' in navigator){
+  const swCode=`
+const CACHE='pruma-v1';
+const SHELL=['/'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)));});
+self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('/'))));});
+`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const url=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(url).catch(()=>{});
+}
+
+// ─── PWA INSTALL PROMPT ──────────────────────────────────────
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('installBar').style.display='flex';
+});
+document.getElementById('installBtn').addEventListener('click',async()=>{
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();
+  const{outcome}=await deferredPrompt.userChoice;
+  if(outcome==='accepted')document.getElementById('installBar').style.display='none';
+  deferredPrompt=null;
+});
+window.addEventListener('appinstalled',()=>{document.getElementById('installBar').style.display='none';});
+</script>
+</body>
+</html>
